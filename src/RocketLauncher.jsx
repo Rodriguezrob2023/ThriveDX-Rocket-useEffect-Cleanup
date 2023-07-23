@@ -7,6 +7,12 @@ const RocketLauncher = (props) => {
     const countdown = () => console.log(counter -= 1)
     console.log('Rocket launcher mounted')
     let interval = setInterval(countdown, 1000)
+
+    // this is what stops the memory leak from multiple intervals.
+    return() => {
+      console.log('Rocket Launcher Unmounted')
+      clearInterval(interval)
+    }
   })
 
   return (
